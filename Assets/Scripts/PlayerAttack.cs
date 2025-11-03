@@ -6,11 +6,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] KeyCode attackKey = KeyCode.Mouse0;
     public GameObject attackPrefab;
     public Transform firePos;
-<<<<<<< Updated upstream
     float attackTime = 0;
     float attackCooldown = 0.4f;
-=======
->>>>>>> Stashed changes
     void Start()
     {
         
@@ -18,16 +15,10 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-<<<<<<< Updated upstream
         if (Input.GetKeyDown(attackKey) && attackTime >= Time.time)
         {
             Instantiate(attackPrefab, firePos.position, firePos.rotation);
             attackTime = Time.time + attackCooldown;
-=======
-        if (Input.GetKeyDown(attackKey))
-        {
-            Instantiate(attackPrefab, firePos.position, firePos.rotation);
->>>>>>> Stashed changes
         }
     }
 }
