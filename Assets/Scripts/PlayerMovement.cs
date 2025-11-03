@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] KeyCode right = KeyCode.D;
     [SerializeField] KeyCode left = KeyCode.A;
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
-    private bool isFacingRight = true;
+   
     [Header("Ground Check")]
     public Transform groundCheck;
     public LayerMask groundLayer;
