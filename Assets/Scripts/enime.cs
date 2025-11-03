@@ -51,14 +51,7 @@ public class enime : MonoBehaviour
             transform.localScale = new Vector3(1f, 1f, 1f); // Ändra skalningen för att titta åt vänster
         }
     }
-     private void takeDamege()
-    {
-        if (takeDamege = true)
-        {
-            death();
-        }
-
-    }
+     
 
 
 
