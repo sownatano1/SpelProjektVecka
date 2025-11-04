@@ -64,6 +64,11 @@ public class enime : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerScript.currentHealth = playerScript.currentHealth - 0.33f;
+
+            if (collision.CompareTag("Player") && Time.time > 1)
+            {
+                playerScript.currentHealth = playerScript.currentHealth - 0.33f;
+            }
         }
     }
 }

@@ -1790,6 +1790,8 @@ MonoBehaviour:
   currentHealth: 0.99
   healthBarImage: {fileID: 1310167372}
   gameOverUI: {fileID: 1657009808}
+  isGameOver: 0
+  restartGame: {fileID: 511458764}
 --- !u!212 &1916042024
 SpriteRenderer:
   m_ObjectHideFlags: 0

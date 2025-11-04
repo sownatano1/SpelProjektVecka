@@ -23,10 +23,15 @@ public class PlayerMovement : MonoBehaviour
     public float maxHealth = 0.99f;
     public float currentHealth = 0.99f;
     public Image healthBarImage;
+
+    [Header("Game Over")]
     public GameObject gameOverUI;
+    public bool isGameOver = false;
+    public Button restartGame;
     void Start()
     {
         currentHealth = maxHealth;
+        restartGame.onClick.AddListener(RestartGame);
     }
 
     void Update()
@@ -56,11 +61,13 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Game Over");
             gameOverUI.gameObject.SetActive(true);
+            isGameOver = true;
         }
     }
 
-    void GameOver()
+    void RestartGame()
     {
-        
+        gameOverUI.gameObject.SetActive(false);
+        currentHealth = maxHealth;
     }
 }
