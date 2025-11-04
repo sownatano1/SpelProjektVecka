@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
     public float jumpForce = 20f;
     public Rigidbody2D rb;
-    private float horizontalInput;
     [SerializeField] KeyCode right = KeyCode.D;
     [SerializeField] KeyCode left = KeyCode.A;
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
@@ -45,8 +44,24 @@ public class PlayerMovement : MonoBehaviour
     {
         canJump = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
-        horizontalInput = Input.GetAxis("Horizontal");
-        Vector3 movement = new Vector3(horizontalInput, 0, 0);
+        if (Input.GetKey(right) && isGameOver == false)
+        {
+            WalkingSound();
+            transform.position += new Vector3(1f, 0f) * speed * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+
+        if (Input.GetKey(left) && isGameOver == false)
+        {
+            WalkingSound();
+            transform.position += new Vector3(-1f, 0f) * speed * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
+
+        else
+        {
+            walkingAudio.enabled = false;
+        }
 
         if (Input.GetKeyDown(jumpKey) && canJump && isGameOver == false)
         {
