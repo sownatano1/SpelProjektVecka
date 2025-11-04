@@ -28,10 +28,12 @@ public class PlayerMovement : MonoBehaviour
     public GameObject gameOverUI;
     public bool isGameOver = false;
     public Button restartGame;
+    private enime enemyScript;
     void Start()
     {
         currentHealth = maxHealth;
         restartGame.onClick.AddListener(RestartGame);
+        enemyScript = GameObject.FindWithTag("Enemy").GetComponent<enime>();
     }
 
     void Update()
@@ -62,6 +64,8 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Game Over");
             gameOverUI.gameObject.SetActive(true);
             isGameOver = true;
+            speed = 0f;
+            enemyScript.moveSpeed = 0f;
         }
     }
 
@@ -69,5 +73,7 @@ public class PlayerMovement : MonoBehaviour
     {
         gameOverUI.gameObject.SetActive(false);
         currentHealth = maxHealth;
+        speed = 5f;
+        enemyScript.moveSpeed = 3f;
     }
 }
