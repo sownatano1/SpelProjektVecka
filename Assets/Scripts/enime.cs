@@ -3,8 +3,7 @@ using UnityEngine.EventSystems;
 
 public class enime : MonoBehaviour
 {
-    private bool takeDamege;
-    int health = 100;
+    public int enemyHealth = 100;
     public float chaseRadius = 10f;
     public float obstacleCheckDistance = 1f;
     public LayerMask obstacleLayerMask;
@@ -39,6 +38,12 @@ public class enime : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
             }
         }
+
+        //If the health is lower or equal to 0 the enemy is destroyed (dead)
+        if (enemyHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
     private void FlipSprite(bool shouldFlipRight)
     {
@@ -51,19 +56,4 @@ public class enime : MonoBehaviour
             transform.localScale = new Vector3(1f, 1f, 1f); // Ändra skalningen för att titta åt vänster
         }
     }
-     
-
-
-
-
-
-    private void death()
-    {
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-  
 }

@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
     public GameObject attackPrefab;
     public Transform firePos;
     float attackTime = 0;
-    float attackCooldown = 0.4f;
+    float attackCooldown = 0.5f;
     void Start()
     {
         
@@ -15,7 +15,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(attackKey) && attackTime >= Time.time)
+        if (Input.GetKeyDown(attackKey) && attackTime <= Time.time)
         {
             Instantiate(attackPrefab, firePos.position, firePos.rotation);
             attackTime = Time.time + attackCooldown;
