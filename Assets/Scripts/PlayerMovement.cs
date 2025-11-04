@@ -20,8 +20,8 @@ public class PlayerMovement : MonoBehaviour
     public bool canJump = false;
 
     [Header("Health")]
-    public float maxHealth = 0.99f;
-    public float currentHealth = 0.99f;
+    public float maxHealth = 1f;
+    public float currentHealth = 1f;
     public Image healthBarImage;
 
     [Header("Game Over")]
@@ -39,33 +39,35 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         canJump = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-        if (Input.GetKey(right))
+
+        if (Input.GetKey(right) && isGameOver == false)
         {
             transform.position += new Vector3(1f, 0f) * speed * Time.deltaTime;
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
 
-        if (Input.GetKey(left))
+        if (Input.GetKey(left) && isGameOver == false)
         {
             transform.position += new Vector3(-1f, 0f) * speed * Time.deltaTime;
             transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
 
-        if (Input.GetKeyDown(jumpKey) && canJump)
+        if (Input.GetKeyDown(jumpKey) && canJump && isGameOver == false)
         {
             rb.AddForce(new Vector3(0f, jumpForce), ForceMode2D.Impulse);
         }
 
+        //Health bar has the same filled amount of the current health
         healthBarImage.fillAmount = currentHealth;
 
         //If the health is lower or equal to 0 the player die (Game Over)
-        if (currentHealth <= 0)
+        if (currentHealth <= 0.01)
         {
             Debug.Log("Game Over");
             gameOverUI.gameObject.SetActive(true);
             isGameOver = true;
-            speed = 0f;
             enemyScript.moveSpeed = 0f;
+
         }
     }
 
