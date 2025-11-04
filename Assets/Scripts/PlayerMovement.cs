@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
     public float jumpForce = 20f;
     public Rigidbody2D rb;
+    private float horizontalInput;
     [SerializeField] KeyCode right = KeyCode.D;
     [SerializeField] KeyCode left = KeyCode.A;
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
@@ -29,6 +30,10 @@ public class PlayerMovement : MonoBehaviour
     public bool isGameOver = false;
     public Button restartGame;
     private enime enemyScript;
+
+    [Header("Sounds")]
+    public AudioSource walkingAudio;
+    public AudioClip[] stepsSounds;
     void Start()
     {
         currentHealth = maxHealth;
@@ -40,17 +45,8 @@ public class PlayerMovement : MonoBehaviour
     {
         canJump = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
-        if (Input.GetKey(right) && isGameOver == false)
-        {
-            transform.position += new Vector3(1f, 0f) * speed * Time.deltaTime;
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        }
-
-        if (Input.GetKey(left) && isGameOver == false)
-        {
-            transform.position += new Vector3(-1f, 0f) * speed * Time.deltaTime;
-            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-        }
+        horizontalInput = Input.GetAxis("Horizontal");
+        Vector3 movement = new Vector3(horizontalInput, 0, 0);
 
         if (Input.GetKeyDown(jumpKey) && canJump && isGameOver == false)
         {
@@ -67,7 +63,6 @@ public class PlayerMovement : MonoBehaviour
             gameOverUI.gameObject.SetActive(true);
             isGameOver = true;
             enemyScript.moveSpeed = 0f;
-
         }
     }
 
@@ -76,5 +71,10 @@ public class PlayerMovement : MonoBehaviour
         gameOverUI.gameObject.SetActive(false);
         currentHealth = maxHealth;
         isGameOver = false;
+    }
+
+    void WalkingSound()
+    {
+        walkingAudio.enabled = true;
     }
 }
