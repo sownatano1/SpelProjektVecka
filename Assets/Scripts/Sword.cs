@@ -4,7 +4,7 @@ using UnityEngine;
 public class Sword : MonoBehaviour
 {
     private enime enemyScript;
-    public int attackDamage = 25;
+    public float attackDamage = 0.25f;
     void Start()
     {
         Invoke("StopAttack", 0.2f);
@@ -35,6 +35,7 @@ public class Sword : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             enemyScript.enemyHealth = enemyScript.enemyHealth - attackDamage;
+            enemyScript.enemyCurrentHealth = enemyScript.enemyCurrentHealth - attackDamage;
         }
     }
 }

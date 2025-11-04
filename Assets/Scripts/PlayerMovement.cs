@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Unity.UI;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -30,9 +31,9 @@ public class PlayerMovement : MonoBehaviour
     public Button restartGame;
     private enime enemyScript;
 
-    [Header("Sounds")]
-    public AudioSource walkingAudio;
-    public AudioClip[] stepsSounds;
+    //[Header("Sounds")]
+    //public AudioSource walkingAudio;
+    //public AudioClip[] stepsSounds;
     void Start()
     {
         currentHealth = maxHealth;
@@ -56,11 +57,6 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
 
-        else
-        {
-            walkingAudio.enabled = false;
-        }
-
         if (Input.GetKeyDown(jumpKey) && canJump && isGameOver == false)
         {
             rb.AddForce(new Vector3(0f, jumpForce), ForceMode2D.Impulse);
@@ -72,7 +68,6 @@ public class PlayerMovement : MonoBehaviour
         //If the health is lower or equal to 0 the player die (Game Over)
         if (currentHealth <= 0.01)
         {
-            Debug.Log("Game Over");
             gameOverUI.gameObject.SetActive(true);
             isGameOver = true;
             enemyScript.moveSpeed = 0f;
@@ -81,8 +76,6 @@ public class PlayerMovement : MonoBehaviour
 
     void RestartGame()
     {
-        gameOverUI.gameObject.SetActive(false);
-        currentHealth = maxHealth;
-        isGameOver = false;
+        SceneManager.LoadScene("New Scene");
     }
 }

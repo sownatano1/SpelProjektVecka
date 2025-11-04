@@ -1,25 +1,33 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class enime : MonoBehaviour
 {
     private PlayerMovement playerScript;
-    public int enemyHealth = 100;
     public float chaseRadius = 10f;
     public float obstacleCheckDistance = 1f;
     public LayerMask obstacleLayerMask;
     private Transform target;
     private bool isChasing = false;
     public float moveSpeed = 3f;
+    public float attackTimer = 1.5f;
 
+    [Header("Enemy Health")]
+    public float enemyHealth = 1;
+    public Image enemyHealthBar;
+    public float enemyCurrentHealth = 1;
     public void Start()
     {
+        enemyCurrentHealth = enemyHealth;
         playerScript = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
     {
+        enemyHealthBar.fillAmount = enemyCurrentHealth;
+
         if (Vector3.Distance(target.position, transform.position) <= chaseRadius)
         {
             isChasing = true;
@@ -29,6 +37,7 @@ public class enime : MonoBehaviour
         {
             isChasing = false;
         }
+
         if (isChasing)
         {
             Vector2 direction = (target.position - transform.position).normalized;
@@ -51,19 +60,35 @@ public class enime : MonoBehaviour
     {
         if (shouldFlipRight)
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f); // Ingen ändring av skalning för att titta åt höger
+            transform.localScale = new Vector3(-1.4f, 1.4f, 1f); // Ingen ändring av skalning för att titta åt höger
         }
         else
         {
-            transform.localScale = new Vector3(1f, 1f, 1f); // Ändra skalningen för att titta åt vänster
+            transform.localScale = new Vector3(1.4f, 1.4f, 1f); // Ändra skalningen för att titta åt vänster
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+    public void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            playerScript.currentHealth = playerScript.currentHealth - 1/3f;
+            //Enemy attack cooldown if the player stays in the enemy collider
+            attackTimer += Time.deltaTime;
+            if (attackTimer >= 1.5f)
+            {
+                playerScript.currentHealth = playerScript.currentHealth - 1 / 3f;
+                attackTimer = 0f;
+            }
+        }
+    }
+
+    //Reset cooldown when player exit enemy collider
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            attackTimer = 1.5f;
         }
     }
 }
