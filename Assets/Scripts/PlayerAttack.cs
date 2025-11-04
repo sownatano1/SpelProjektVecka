@@ -8,7 +8,6 @@ public class PlayerAttack : MonoBehaviour
     public Transform firePos;
     float attackTime = 0;
     float attackCooldown = 0.5f;
-    public AudioSource audioSource;
     void Start()
     {
         
@@ -20,7 +19,7 @@ public class PlayerAttack : MonoBehaviour
         {
             Instantiate(attackPrefab, firePos.position, firePos.rotation);
             attackTime = Time.time + attackCooldown;
-            audioSource.Play();
+
         }
     }
 }
