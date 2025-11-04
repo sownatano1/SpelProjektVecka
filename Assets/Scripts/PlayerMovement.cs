@@ -1,5 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using Unity.UI;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,9 +18,15 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     public float groundCheckRadius = 0.2f;
     public bool canJump = false;
+
+    [Header("Health")]
+    public float maxHealth = 0.99f;
+    public float currentHealth = 0.99f;
+    public Image healthBarImage;
+    public GameObject gameOverUI;
     void Start()
     {
-        
+        currentHealth = maxHealth;
     }
 
     void Update()
@@ -40,5 +48,19 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(new Vector3(0f, jumpForce), ForceMode2D.Impulse);
         }
+
+        healthBarImage.fillAmount = currentHealth;
+
+        //If the health is lower or equal to 0 the player die (Game Over)
+        if (currentHealth <= 0)
+        {
+            Debug.Log("Game Over");
+            gameOverUI.gameObject.SetActive(true);
+        }
+    }
+
+    void GameOver()
+    {
+        
     }
 }
