@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 
 public class enime : MonoBehaviour
 {
+    private PlayerMovement playerScript;
     public int enemyHealth = 100;
     public float chaseRadius = 10f;
     public float obstacleCheckDistance = 1f;
@@ -13,6 +14,7 @@ public class enime : MonoBehaviour
 
     public void Start()
     {
+        playerScript = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -54,6 +56,14 @@ public class enime : MonoBehaviour
         else
         {
             transform.localScale = new Vector3(1f, 1f, 1f); // Ändra skalningen för att titta åt vänster
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            playerScript.currentHealth = playerScript.currentHealth - 0.33f;
         }
     }
 }
