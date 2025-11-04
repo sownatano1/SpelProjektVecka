@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2846ab431ee2b439a02d515e9f39c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sword
+  attackDamage: 25
 --- !u!1 &6823434299202638996
 GameObject:
   m_ObjectHideFlags: 0
