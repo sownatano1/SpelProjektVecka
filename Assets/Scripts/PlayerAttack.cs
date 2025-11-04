@@ -19,6 +19,7 @@ public class PlayerAttack : MonoBehaviour
         {
             Instantiate(attackPrefab, firePos.position, firePos.rotation);
             attackTime = Time.time + attackCooldown;
+
         }
     }
 }

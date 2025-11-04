@@ -46,14 +46,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(right) && isGameOver == false)
         {
-            WalkingSound();
             transform.position += new Vector3(1f, 0f) * speed * Time.deltaTime;
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
 
         if (Input.GetKey(left) && isGameOver == false)
         {
-            WalkingSound();
             transform.position += new Vector3(-1f, 0f) * speed * Time.deltaTime;
             transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
@@ -86,10 +84,5 @@ public class PlayerMovement : MonoBehaviour
         gameOverUI.gameObject.SetActive(false);
         currentHealth = maxHealth;
         isGameOver = false;
-    }
-
-    void WalkingSound()
-    {
-        walkingAudio.enabled = true;
     }
 }
