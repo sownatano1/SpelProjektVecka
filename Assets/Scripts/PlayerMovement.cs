@@ -75,7 +75,6 @@ public class PlayerMovement : MonoBehaviour
     {
         gameOverUI.gameObject.SetActive(false);
         currentHealth = maxHealth;
-        speed = 5f;
-        enemyScript.moveSpeed = 3f;
+        isGameOver = false;
     }
 }
