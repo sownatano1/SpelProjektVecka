@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f96a627496f6bf9438fe2cc912befc71
+guid: 4c3a7a982539e2c4c8516164eff9378b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7812277128739196716
-    second: candle_unlit_0
+      213: -6395582101973284232
+    second: candle_unlit_1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 12
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: candle_unlit_0
+      name: candle_unlit_1_0
       rect:
         serializedVersion: 2
         x: 5
         y: 0
         width: 6
-        height: 13
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4d07796b757359390800000000000000
-      internalID: -7812277128739196716
+      spriteID: 87a4908a6f35e37a0800000000000000
+      internalID: -6395582101973284232
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      candle_unlit_0: -7812277128739196716
+      candle_unlit_1_0: -6395582101973284232
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
