@@ -85,6 +85,6 @@ public class PlayerMovement : MonoBehaviour
 
     void RestartGame()
     {
-        SceneManager.LoadScene("New Scene");
+        SceneManager.LoadScene("J Scene");
     }
 }
