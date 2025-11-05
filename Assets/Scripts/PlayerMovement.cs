@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
     public float jumpForce = 20f;
     public Rigidbody2D rb;
+    public Collider2D col;
     [SerializeField] KeyCode right = KeyCode.D;
     [SerializeField] KeyCode left = KeyCode.A;
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isGameOver = false;
     public Button restartGame;
     private enime enemyScript;
+    private CheckPoint checkPoint;
 
     //[Header("Sounds")]
     //public AudioSource walkingAudio;
@@ -39,10 +41,16 @@ public class PlayerMovement : MonoBehaviour
         currentHealth = maxHealth;
         restartGame.onClick.AddListener(RestartGame);
         enemyScript = GameObject.FindWithTag("Enemy").GetComponent<enime>();
+
+        if (CheckPoint.instance != null)
+        {
+            transform.position = CheckPoint.instance.checkpointPosition;
+        }
     }
 
-    void Update()
-    {
+
+     void Update()
+     {
         canJump = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
         if (Input.GetKey(right) && isGameOver == false)
@@ -74,11 +82,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    
-    
-
     void RestartGame()
     {
-        SceneManager.LoadScene("New Scene");
+        SceneManager.LoadScene("J Scene");
     }
 }

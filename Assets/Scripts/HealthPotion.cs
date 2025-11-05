@@ -18,7 +18,11 @@ public class Healthpotion : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            playerScript.currentHealth = playerScript.currentHealth + playerScript.maxHealth / 3;
+            if (playerScript.currentHealth < 1)
+            {
+                playerScript.currentHealth = playerScript.currentHealth + playerScript.maxHealth / 3;
+            }
+
             Destroy(gameObject);
         }
     }

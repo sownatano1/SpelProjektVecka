@@ -55,10 +55,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _FlashAmount: 0.000005185604
+    - _FlashAmount: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _FlashColor: {r: 1.7411011, g: 0, b: 0, a: 1}
+    - _FlashColor: {r: 1.2483368, g: 0, b: 0.013655696, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
