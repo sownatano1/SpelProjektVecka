@@ -3,23 +3,26 @@ using UnityEngine;
 public class MovingPlataform : MonoBehaviour
 {
     public float speed = 2;
-    public Vector3 EndPos;
-    public Vector3 StartPos;
+    public Transform EndPos;
+    public Transform StartPos;
     void Start()
     {
-        transform.position = StartPos;
+        transform.position = StartPos.position;
     }
 
     void Update()
     {
-        if (transform.position == EndPos)
+        Vector2 start = StartPos.position;
+        Vector2 end = EndPos.position;
+
+        if (transform.position.y <= StartPos.position.y)
         {
-            transform.Translate(Vector3.down * speed * Time.deltaTime);
+            transform.position = Vector2.Lerp(start, end, 1);
         }
 
-        if (transform.position == StartPos)
+        if (transform.position.y >= EndPos.position.y)
         {
-            transform.Translate(Vector3.up * speed * Time.deltaTime);
+            transform.position = Vector2.Lerp(start, end, 1);
         }
     }
 }
