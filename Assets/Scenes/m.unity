@@ -1786,8 +1786,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingPlataform
   speed: 2
-  EndPos: {x: -7, y: 0, z: 0}
-  StartPos: {x: -7, y: -3, z: 0}
+  EndPos: {fileID: 0}
+  StartPos: {fileID: 0}
 --- !u!61 &859928000
 BoxCollider2D:
   m_ObjectHideFlags: 0
