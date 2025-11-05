@@ -74,17 +74,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("HealthPotion"))
-        {
-            currentHealth = currentHealth + 1 / 3;
-            Destroy(collision);
-        }
-    }
+    
+    
 
     void RestartGame()
     {
-        SceneManager.LoadScene("J Scene");
+        SceneManager.LoadScene("New Scene");
     }
 }
