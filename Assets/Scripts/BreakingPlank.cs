@@ -5,9 +5,11 @@ public class BreakingPlank : MonoBehaviour
     private PlayerMovement playerScript;
     public GameObject breakParticle;
     public AudioSource breakingSound;
+    public GameObject barrier;
     void Start()
     {
         playerScript = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
+        breakingSound.volume = 10;
     }
 
     void Update()
@@ -28,5 +30,11 @@ public class BreakingPlank : MonoBehaviour
         breakingSound.Play();
         Instantiate(breakParticle);
         Destroy(gameObject);
+        Invoke("BarrierDestroy", 5);
+    }
+
+    void BarrierDestroy()
+    {
+        Destroy(barrier);
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class enime : MonoBehaviour
 {
+    Animator enemyAnim;
     private PlayerMovement playerScript;
     public float chaseRadius = 10f;
     public float obstacleCheckDistance = 1f;
@@ -22,6 +23,7 @@ public class enime : MonoBehaviour
         enemyCurrentHealth = enemyHealth;
         playerScript = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        enemyAnim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -36,6 +38,7 @@ public class enime : MonoBehaviour
         else
         {
             isChasing = false;
+            enemyAnim.SetBool("isWalking", false);
         }
 
         if (isChasing)
@@ -48,10 +51,11 @@ public class enime : MonoBehaviour
                 Vector3 targetPosition = new Vector3(target.position.x, transform.position.y, transform.position.z);
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
             }
+            enemyAnim.SetBool("isWalking", true);
         }
 
         //If the health is lower or equal to 0 the enemy is destroyed (dead)
-        if (enemyHealth <= 0)
+        if (enemyCurrentHealth <= 0)
         {
             Destroy(gameObject);
         }
@@ -68,7 +72,7 @@ public class enime : MonoBehaviour
         }
     }
 
-    
+
     public void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -80,6 +84,13 @@ public class enime : MonoBehaviour
                 playerScript.currentHealth = playerScript.currentHealth - 1 / 3f;
                 attackTimer = 0f;
             }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Attack"))
+        {
+            enemyCurrentHealth = enemyCurrentHealth - 0.125f;
         }
     }
 
