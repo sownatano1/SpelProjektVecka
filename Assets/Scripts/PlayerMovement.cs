@@ -3,9 +3,13 @@ using UnityEngine;
 using Unity.UI;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
+    float dirX;
+    Animator anim;
     [Header("Player Movement")]
     public float speed = 5f;
     public float jumpForce = 20f;
@@ -33,6 +37,14 @@ public class PlayerMovement : MonoBehaviour
     private enime enemyScript;
     private CheckPoint checkPoint;
 
+    [Header("Player Attack")]
+    [SerializeField] KeyCode attackKey = KeyCode.Mouse0;
+    public GameObject attackPrefab;
+    public Transform firePos;
+    float attackTime = 0;
+    float attackCooldown = 0.5f;
+    public AudioSource attackAudio;
+
     //[Header("Sounds")]
     //public AudioSource walkingAudio;
     //public AudioClip[] stepsSounds;
@@ -46,6 +58,9 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = CheckPoint.instance.checkpointPosition;
         }
+        
+        anim = GetComponent<Animator>();
+        speed = 5f; 
     }
 
 
@@ -79,6 +94,26 @@ public class PlayerMovement : MonoBehaviour
             gameOverUI.gameObject.SetActive(true);
             isGameOver = true;
             enemyScript.moveSpeed = 0f;
+        }
+        dirX = Input.GetAxisRaw ("Horizontal") * speed * Time.deltaTime; 
+        transform.position = new Vector2 (transform.position.x + dirX, transform.position.y);
+        if (dirX != 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            anim.SetBool("isWalking", true);
+        }
+        else {
+            anim.SetBool("isWalking", false);
+
+
+        }
+
+        if (Input.GetKeyDown(attackKey) && attackTime <= Time.time && isGameOver == false && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            Instantiate(attackPrefab, firePos.position, firePos.rotation);
+            attackTime = Time.time + attackCooldown;
+            attackAudio.Play();
+            anim.SetBool("isWalking", false);
+            anim.SetTrigger("hit");
         }
     }
 
