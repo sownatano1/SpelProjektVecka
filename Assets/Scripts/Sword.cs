@@ -8,7 +8,7 @@ public class Sword : MonoBehaviour
     private DamageFlash damageflash;
     void Start()
     {
-        Invoke("StopAttack", 0.2f);
+        Invoke("StopAttack", 0.1f);
         damageflash = GetComponent<DamageFlash>();
 
         if (GameObject.FindWithTag("Enemy") == null)
