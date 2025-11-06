@@ -25,12 +25,6 @@ public class BreakingPlataform : MonoBehaviour
     void StartShattering()
     {
         transform.rotation = Quaternion.Euler(0, 0, 90);
-        Invoke("Shattering", 0.4f);
-    }
-
-    void Shattering()
-    {
-        transform.rotation = Quaternion.Euler(0, 0, 0);
         Invoke("BreakPlataform", 0.4f);
     }
 

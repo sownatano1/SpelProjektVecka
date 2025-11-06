@@ -4,6 +4,7 @@ public class BreakingPlank : MonoBehaviour
 {
     private PlayerMovement playerScript;
     public GameObject breakParticle;
+    public AudioSource breakingSound;
     void Start()
     {
         playerScript = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
@@ -24,6 +25,7 @@ public class BreakingPlank : MonoBehaviour
 
     void Break()
     {
+        breakingSound.Play();
         Instantiate(breakParticle);
         Destroy(gameObject);
     }

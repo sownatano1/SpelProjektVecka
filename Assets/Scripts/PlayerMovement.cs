@@ -113,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(attackKey) && attackTime <= Time.time && isGameOver == false && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
-            Instantiate(attackPrefab, firePos.position, firePos.rotation);
+            Invoke("Attack", 0.6f);
             attackTime = Time.time + attackCooldown;
             attackAudio.Play();
             anim.SetBool("isWalking", false);
@@ -121,8 +121,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void Attack()
+    {
+        Instantiate(attackPrefab, firePos.position, firePos.rotation);
+    }
     void RestartGame()
     {
-        SceneManager.LoadScene("Main Scene");
+        SceneManager.LoadScene("Main Level");
     }
 }

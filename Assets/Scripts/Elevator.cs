@@ -4,7 +4,7 @@ public class Elevator : MonoBehaviour
 {
     public float elevatorSpeed;
     bool start = false;
-
+    public AudioSource elevatorSound;
     void Start()
     {
         
@@ -42,6 +42,7 @@ public class Elevator : MonoBehaviour
 
     void GoDown()
     {
+        elevatorSound.Play();
         start = true;
     }
 }
