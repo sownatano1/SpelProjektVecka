@@ -1586,6 +1586,7 @@ GameObject:
   - component: {fileID: 1379433306}
   - component: {fileID: 1379433305}
   - component: {fileID: 1379433304}
+  - component: {fileID: 1379433310}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1697,6 +1698,7 @@ MonoBehaviour:
   speed: 5
   jumpForce: 5
   rb: {fileID: 1379433306}
+  col: {fileID: 0}
   right: 100
   left: 97
   jumpKey: 32
@@ -1712,6 +1714,10 @@ MonoBehaviour:
   gameOverUI: {fileID: 1726236321}
   isGameOver: 0
   restartGame: {fileID: 1065394718}
+  attackKey: 323
+  attackPrefab: {fileID: 1062824055731487521, guid: cbe199d06fca01c4890b22198765c0b5, type: 3}
+  firePos: {fileID: 969930564}
+  attackAudio: {fileID: 969930565}
 --- !u!212 &1379433308
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1787,6 +1793,28 @@ Transform:
   - {fileID: 969930564}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1379433310
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379433303}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9c0f16ca22f24124f92255b46dff97d2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1427917327
 GameObject:
   m_ObjectHideFlags: 0

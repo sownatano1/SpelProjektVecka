@@ -17,11 +17,6 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(attackKey) && attackTime <= Time.time && playerMovement.isGameOver == false)
-        {
-            Instantiate(attackPrefab, firePos.position, firePos.rotation);
-            attackTime = Time.time + attackCooldown;
-            attackAudio.Play();
-        }
+       
     }
 }
