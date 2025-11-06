@@ -43,8 +43,10 @@ public class PlayerMovement : MonoBehaviour
     public Transform firePos;
     float attackTime = 0;
     float attackCooldown = 0.5f;
+  
+    [Header("Sounds")]
     public AudioSource attackAudio;
-
+    public AudioSource jumpAudio;
     //[Header("Sounds")]
     //public AudioSource walkingAudio;
     //public AudioClip[] stepsSounds;
@@ -83,6 +85,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(jumpKey) && canJump && isGameOver == false)
         {
             rb.AddForce(new Vector3(0f, jumpForce), ForceMode2D.Impulse);
+            jumpAudio.Play();
+            
         }
 
         //Health bar has the same filled amount of the current health
@@ -119,6 +123,6 @@ public class PlayerMovement : MonoBehaviour
 
     void RestartGame()
     {
-        SceneManager.LoadScene("J Scene");
+        SceneManager.LoadScene("Main Scene");
     }
 }
