@@ -60,11 +60,11 @@ public class enime : MonoBehaviour
     {
         if (shouldFlipRight)
         {
-            transform.localScale = new Vector3(-1.4f, 1.4f, 1f); // Ingen ändring av skalning för att titta åt höger
+            transform.localScale = new Vector3(-3f, 3f, 1f); // Ingen ändring av skalning för att titta åt höger
         }
         else
         {
-            transform.localScale = new Vector3(1.4f, 1.4f, 1f); // Ändra skalningen för att titta åt vänster
+            transform.localScale = new Vector3(3f, 3f, 1f); // Ändra skalningen för att titta åt vänster
         }
     }
 
