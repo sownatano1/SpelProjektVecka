@@ -12,6 +12,8 @@ TagManager:
   - Eyes
   - Boss
   - Monster
+  - DarkWall
+  - CheckPointManager
   layers:
   - Default
   - TransparentFX

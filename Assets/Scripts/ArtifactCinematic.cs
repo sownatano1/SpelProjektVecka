@@ -17,8 +17,7 @@ public class ArtifactCinematic : MonoBehaviour
     {
         if (moveCamera == true)
         {
-            cameraScript.transform.position = Vector3.MoveTowards(cameraScript.transform.position,
-            transform.position, moveSpeed * Time.deltaTime);
+            cameraScript.transform.position = transform.position;
         }
 
         if (cameraScript.transform.position == transform.position)

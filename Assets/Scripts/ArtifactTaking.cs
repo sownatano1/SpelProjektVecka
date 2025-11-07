@@ -13,11 +13,13 @@ public class Artifactaking : MonoBehaviour
     public GameObject playerPos2;
     public SpriteRenderer artifactSprite;
     public AudioSource victorySound;
+    private CheckPoint checkPoint;
     void Start()
     {
         cam = Camera.main;   
         playerScript = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
         cameraScript = GameObject.FindWithTag("MainCamera").GetComponent<CameraFollower>();
+        checkPoint = GameObject.FindWithTag("CheckPointManager").GetComponent<CheckPoint>();
     }
 
     // Update is called once per frame
@@ -52,6 +54,7 @@ public class Artifactaking : MonoBehaviour
         playerScript.VictoryAnimation();
         playerScript.transform.position = playerPos2.transform.position;
         Destroy(artifactSprite);
+        Destroy(checkPoint);
         Invoke("EndScene", 0.5f);
     }
 
