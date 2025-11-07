@@ -1,6 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
-
+//Made by Jonathan
 public class BossTrigger : MonoBehaviour
 {
     public AudioSource snapSound;

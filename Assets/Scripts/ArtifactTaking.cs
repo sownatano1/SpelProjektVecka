@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+//Made by Jonathan
 public class Artifactaking : MonoBehaviour
 {
     private PlayerMovement playerScript;
@@ -9,7 +10,9 @@ public class Artifactaking : MonoBehaviour
     public float moveSpeed = 2;
     public GameObject camPos;
     public GameObject playerPos;
+    public GameObject playerPos2;
     public SpriteRenderer artifactSprite;
+    public AudioSource victorySound;
     void Start()
     {
         cam = Camera.main;   
@@ -47,6 +50,13 @@ public class Artifactaking : MonoBehaviour
     void StartAnimation()
     {
         playerScript.VictoryAnimation();
+        playerScript.transform.position = playerPos2.transform.position;
         Destroy(artifactSprite);
+        Invoke("EndScene", 0.5f);
+    }
+
+    void EndScene()
+    {
+        SceneManager.LoadScene("Ending");
     }
 }

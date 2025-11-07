@@ -1,10 +1,10 @@
 using Unity.VisualScripting;
 using UnityEngine;
-using Unity.UI;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
+//Made by Jonathan
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -48,7 +48,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Sounds")]
     public AudioSource attackAudio;
     public AudioSource jumpAudio;
-    public AudioSource damageAudio;
     //[Header("Sounds")]
     //public AudioSource walkingAudio;
     //public AudioClip[] stepsSounds;
@@ -123,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(attackKey) && attackTime <= Time.time && isGameOver == false && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
-            Invoke("Attack", 0.3f);
+            Invoke("Attack", 0.2f);
             attackTime = Time.time + attackCooldown;
             attackAudio.Play();
             anim.SetBool("isWalking", false);
@@ -139,10 +138,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("Clicked");
         SceneManager.LoadScene("Main Level");
-    }
-    public void DamageSound()
-    {
-        damageAudio.Play();
     }
 
     public void VictoryAnimation()

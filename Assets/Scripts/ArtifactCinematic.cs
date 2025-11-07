@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//Made by Jonathan
 public class ArtifactCinematic : MonoBehaviour
 {
     private PlayerMovement playerScript;

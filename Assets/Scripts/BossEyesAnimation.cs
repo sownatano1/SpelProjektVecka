@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//Made by Jonathan
 public class BossEyesAnimation : MonoBehaviour
 {
     Animator animator;

@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62104c4c34958134ca343859a0d7bc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossMovement
-  speed: 1.7
+  speed: 1.5
   bossAudio: {fileID: -3305282942857742800}
 --- !u!82 &-3305282942857742800
 AudioSource:

@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//Made by Jonathan
 public class CameraFollower : MonoBehaviour
 {
     public GameObject player;

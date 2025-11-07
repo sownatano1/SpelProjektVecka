@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//Made by Jonathan
 public class BossMovement : MonoBehaviour
 {
     public float speed = 2;

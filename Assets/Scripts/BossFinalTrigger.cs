@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//Made by Jonathan
 public class BossFinalTrigger : MonoBehaviour
 {
     public GameObject boss;

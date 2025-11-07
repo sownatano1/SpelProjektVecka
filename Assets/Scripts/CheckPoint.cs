@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
-
+//Made by Jonathan
 public class CheckPoint : MonoBehaviour
 {
     public static CheckPoint instance;

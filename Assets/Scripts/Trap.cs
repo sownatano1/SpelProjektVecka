@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//Made by Jonathan
 public class Trap : MonoBehaviour
 {
     private PlayerMovement playerScript;

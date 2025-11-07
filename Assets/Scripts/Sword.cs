@@ -1,6 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
-
+//Made by Jonathan
 public class Sword : MonoBehaviour
 {
     private enime enemyScript;

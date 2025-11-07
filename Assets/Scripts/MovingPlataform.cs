@@ -1,6 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
-
+//Made by Jonathan
 public class MovingPlataform : MonoBehaviour
 {
     public float speed = 2;

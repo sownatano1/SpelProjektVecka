@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
+//Made by Jonathan & Montaser
 public class enime : MonoBehaviour
 {
     Animator enemyAnim;
@@ -13,6 +13,7 @@ public class enime : MonoBehaviour
     private bool isChasing = false;
     public float moveSpeed = 3f;
     public float attackTimer = 1.5f;
+    public AudioSource playerDamage;
 
     [Header("Enemy Health")]
     public float enemyHealth = 1;
@@ -81,7 +82,9 @@ public class enime : MonoBehaviour
             attackTimer += Time.deltaTime;
             if (attackTimer >= 1.5f)
             {
+                DamageSound();
                 playerScript.currentHealth = playerScript.currentHealth - 1 / 3f;
+                collision.GetComponent<DamageFlash>().Flash();
                 attackTimer = 0f;
             }
         }
@@ -91,7 +94,6 @@ public class enime : MonoBehaviour
         if (other.CompareTag("Attack"))
         {
             enemyCurrentHealth = enemyCurrentHealth - 0.125f;
-            playerScript.DamageSound();
         }
     }
 
@@ -102,5 +104,11 @@ public class enime : MonoBehaviour
         {
             attackTimer = 1.5f;
         }
+    }
+    
+    void DamageSound()
+    {
+        Debug.Log("PlaySound");
+        playerDamage.Play();
     }
 }
