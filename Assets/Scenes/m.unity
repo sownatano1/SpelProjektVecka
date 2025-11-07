@@ -695,6 +695,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d0cf7edd456454197d6514670b0b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BreakingPlataform
+  spriteRenderer: {fileID: 0}
+  sprite1: {fileID: 0}
+  sprite2: {fileID: 0}
+  sprite3: {fileID: 0}
 --- !u!212 &312388647
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -927,6 +931,7 @@ MonoBehaviour:
     m_Bits: 0
   moveSpeed: 2
   attackTimer: 1.5
+  playerDamage: {fileID: 0}
   enemyHealth: 1
   enemyHealthBar: {fileID: 1780881567}
   enemyCurrentHealth: 1
@@ -1345,10 +1350,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eecc618e142a0ab49adaffa436428c6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
-  attackKey: 323
-  attackPrefab: {fileID: 1062824055731487521, guid: cbe199d06fca01c4890b22198765c0b5, type: 3}
-  firePos: {fileID: 2082867365}
-  attackAudio: {fileID: 2082867364}
 --- !u!114 &465453128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1364,9 +1365,11 @@ MonoBehaviour:
   speed: 5
   jumpForce: 5
   rb: {fileID: 465453126}
+  col: {fileID: 0}
   right: 100
   left: 97
   jumpKey: 32
+  isCinematic: 0
   groundCheck: {fileID: 1745001586}
   groundLayer:
     serializedVersion: 2
@@ -1379,6 +1382,11 @@ MonoBehaviour:
   gameOverUI: {fileID: 138289587}
   isGameOver: 0
   restartGame: {fileID: 1228172658}
+  attackKey: 323
+  attackPrefab: {fileID: 0}
+  firePos: {fileID: 0}
+  attackAudio: {fileID: 0}
+  jumpAudio: {fileID: 0}
 --- !u!212 &465453129
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1681,6 +1689,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d0cf7edd456454197d6514670b0b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BreakingPlataform
+  spriteRenderer: {fileID: 0}
+  sprite1: {fileID: 0}
+  sprite2: {fileID: 0}
+  sprite3: {fileID: 0}
 --- !u!212 &809333927
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1788,6 +1800,7 @@ MonoBehaviour:
   speed: 2
   EndPos: {fileID: 0}
   StartPos: {fileID: 0}
+  turn: 1
 --- !u!61 &859928000
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2391,6 +2404,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d0cf7edd456454197d6514670b0b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BreakingPlataform
+  spriteRenderer: {fileID: 0}
+  sprite1: {fileID: 0}
+  sprite2: {fileID: 0}
+  sprite3: {fileID: 0}
 --- !u!212 &1252770689
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2819,6 +2836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollower
   player: {fileID: 465453123}
   offset: {x: 0, y: 0, z: -10}
+  isCinematic: 0
 --- !u!114 &1645460361
 MonoBehaviour:
   m_ObjectHideFlags: 0
