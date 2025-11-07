@@ -11,13 +11,14 @@ public class PlayerMovement : MonoBehaviour
     float dirX;
     Animator anim;
     [Header("Player Movement")]
-    public float speed = 5f;
-    public float jumpForce = 20f;
+    public float speed = 8f;
+    public float jumpForce = 8f;
     public Rigidbody2D rb;
     public Collider2D col;
     [SerializeField] KeyCode right = KeyCode.D;
     [SerializeField] KeyCode left = KeyCode.A;
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
+    public bool isCinematic = false;
    
     [Header("Ground Check")]
     public Transform groundCheck;
@@ -52,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
     //public AudioClip[] stepsSounds;
     void Start()
     {
+        isCinematic = false;
         currentHealth = maxHealth;
         restartGame.onClick.AddListener(RestartGame);
         enemyScript = GameObject.FindWithTag("Enemy").GetComponent<enime>();
@@ -62,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
         anim = GetComponent<Animator>();
-        speed = 5f; 
+        speed = 8f; 
     }
 
 
@@ -72,17 +74,15 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(right) && isGameOver == false)
         {
-            transform.position += new Vector3(1f, 0f) * speed * Time.deltaTime;
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
 
         if (Input.GetKey(left) && isGameOver == false)
         {
-            transform.position += new Vector3(-1f, 0f) * speed * Time.deltaTime;
             transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
 
-        if (Input.GetKeyDown(jumpKey) && canJump && isGameOver == false)
+        if (Input.GetKeyDown(jumpKey) && canJump && isGameOver == false && isCinematic == false)
         {
             rb.AddForce(new Vector3(0f, jumpForce), ForceMode2D.Impulse);
             jumpAudio.Play();
@@ -105,15 +105,24 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("isWalking", true);
         }
-        else {
+        else
+        {
             anim.SetBool("isWalking", false);
+        }
 
+        if (isGameOver == true || isCinematic == true)
+        {
+            speed = 0f;
+        }
 
+        else
+        {
+            speed = 8f;
         }
 
         if (Input.GetKeyDown(attackKey) && attackTime <= Time.time && isGameOver == false && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
-            Instantiate(attackPrefab, firePos.position, firePos.rotation);
+            Invoke("Attack", 0.3f);
             attackTime = Time.time + attackCooldown;
             attackAudio.Play();
             anim.SetBool("isWalking", false);
@@ -121,8 +130,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void Attack()
+    {
+        Instantiate(attackPrefab, firePos.position, firePos.rotation);
+    }
     void RestartGame()
     {
-        SceneManager.LoadScene("Main Scene");
+        Debug.Log("Clicked");
+        SceneManager.LoadScene("Main Level");
     }
 }

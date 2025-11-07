@@ -17,20 +17,20 @@ public class BreakingPlataform : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            transform.rotation = Quaternion.Euler(180, 0, 90);
-            Invoke("StartShattering", 0.4f);
+            Invoke("Shatter", 0.4f);
         }
     }
+
+    void Shatter()
+    {
+        transform.rotation = Quaternion.Euler(180, 0, 90);
+        Invoke("StartShattering", 0.4f);
+    }
+    
 
     void StartShattering()
     {
         transform.rotation = Quaternion.Euler(0, 0, 90);
-        Invoke("Shattering", 0.4f);
-    }
-
-    void Shattering()
-    {
-        transform.rotation = Quaternion.Euler(0, 0, 0);
         Invoke("BreakPlataform", 0.4f);
     }
 

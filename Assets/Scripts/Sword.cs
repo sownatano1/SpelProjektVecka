@@ -36,10 +36,7 @@ public class Sword : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            enemyScript.enemyHealth = enemyScript.enemyHealth - attackDamage;
-            enemyScript.enemyCurrentHealth = enemyScript.enemyCurrentHealth - attackDamage;
             collision.GetComponent<DamageFlash>().Flash();
-            //damageflash.Flash();
         }
     }
 }

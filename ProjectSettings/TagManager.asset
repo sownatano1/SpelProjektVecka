@@ -9,6 +9,9 @@ TagManager:
   - Attack
   - Trap
   - CheckPoint
+  - Eyes
+  - Boss
+  - Monster
   layers:
   - Default
   - TransparentFX
