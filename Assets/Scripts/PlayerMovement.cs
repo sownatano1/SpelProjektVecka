@@ -122,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(attackKey) && attackTime <= Time.time && isGameOver == false && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
-            Invoke("Attack", 0.6f);
+            Invoke("Attack", 0.3f);
             attackTime = Time.time + attackCooldown;
             attackAudio.Play();
             anim.SetBool("isWalking", false);
