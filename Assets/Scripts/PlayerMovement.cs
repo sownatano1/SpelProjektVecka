@@ -144,4 +144,9 @@ public class PlayerMovement : MonoBehaviour
     {
         damageAudio.Play();
     }
+
+    public void VictoryAnimation()
+    {
+        anim.SetBool("isVictory", true);
+    }
 }
