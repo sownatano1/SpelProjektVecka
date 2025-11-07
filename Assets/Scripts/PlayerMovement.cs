@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Sounds")]
     public AudioSource attackAudio;
     public AudioSource jumpAudio;
+    public AudioSource damageAudio;
     //[Header("Sounds")]
     //public AudioSource walkingAudio;
     //public AudioClip[] stepsSounds;
@@ -138,5 +139,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("Clicked");
         SceneManager.LoadScene("Main Level");
+    }
+    public void DamageSound()
+    {
+        damageAudio.Play();
     }
 }

@@ -91,6 +91,7 @@ public class enime : MonoBehaviour
         if (other.CompareTag("Attack"))
         {
             enemyCurrentHealth = enemyCurrentHealth - 0.125f;
+            playerScript.DamageSound();
         }
     }
 

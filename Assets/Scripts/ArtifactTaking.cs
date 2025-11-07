@@ -4,11 +4,14 @@ public class Artifactaking : MonoBehaviour
 {
     private PlayerMovement playerScript;
     private CameraFollower cameraScript;
-    public Camera camera;
+    public Camera cam;
     private bool moveCamera = false;
     public float moveSpeed = 2;
+    public GameObject camPos;
+    public GameObject playerPos;
     void Start()
     {
+        cam = Camera.main;   
         playerScript = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
         cameraScript = GameObject.FindWithTag("MainCamera").GetComponent<CameraFollower>();
     }
@@ -18,7 +21,8 @@ public class Artifactaking : MonoBehaviour
     {
         if (moveCamera == true)
         {
-;
+            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, 10, moveSpeed);
+            cam.transform.position = camPos.transform.position;
         }
 
         if (cameraScript.transform.position == transform.position)
