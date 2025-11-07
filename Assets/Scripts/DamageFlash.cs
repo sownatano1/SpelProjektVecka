@@ -1,7 +1,7 @@
 using System.Collections;
-
 using UnityEngine;
 
+//Raphael script
     public class DamageFlash : MonoBehaviour
     {
         [SerializeField] private Material flashMaterial;

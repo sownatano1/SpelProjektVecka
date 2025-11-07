@@ -9,6 +9,7 @@ public class Artifactaking : MonoBehaviour
     public float moveSpeed = 2;
     public GameObject camPos;
     public GameObject playerPos;
+    public SpriteRenderer artifactSprite;
     void Start()
     {
         cam = Camera.main;   
@@ -23,6 +24,8 @@ public class Artifactaking : MonoBehaviour
         {
             cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, 10, moveSpeed);
             cam.transform.position = camPos.transform.position;
+            playerScript.transform.position = playerPos.transform.position;
+            Invoke("StartAnimation", 1);
         }
 
         if (cameraScript.transform.position == transform.position)
@@ -39,5 +42,11 @@ public class Artifactaking : MonoBehaviour
             cameraScript.isCinematic = true;
             moveCamera = true;
         }
+    }
+
+    void StartAnimation()
+    {
+        playerScript.VictoryAnimation();
+        Destroy(artifactSprite);
     }
 }
